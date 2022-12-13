@@ -1,0 +1,40 @@
+<app-header></app-header>
+
+<section class="container">
+    <h2>Agregar Estudiante</h2>
+    <form action="" class="d-flex flex-column">
+        <div class="row">
+            <mat-form-field appearance="outline" class="col-sm-4">
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="Ej: Manuel">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-sm-4">
+                <mat-label>Apellido</mat-label>
+                <input matInput placeholder="Ej: Germosen">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-sm-4">
+                <mat-label>Cedula</mat-label>
+                <input matInput placeholder="Ej: 402-1234567-8">
+                <mat-icon matSuffix>credit_card</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline" class="col-sm-6">
+                <mat-label>Telefono</mat-label>
+                <input matInput placeholder="Ej: (809) 123-4567">
+                <mat-icon matSuffix>phone</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-sm-6">
+                <mat-label>Correo Electronico</mat-label>
+                <input matInput placeholder="elian@gmail.com">
+                <mat-icon matSuffix>alternate_email</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="gap justify-content-end">
+            <button mat-button color="warn">Cancelar</button>
+            <button mat-raised-button color="primary">Guardar</button>
+        </div>
+    </form>
+</section>

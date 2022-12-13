@@ -1,50 +1,39 @@
 <app-header></app-header>
 
 <section class="container">
-    <h2>Estudiantes</h2>
+    <h2>Asistencia</h2>
     <article class="d-flex justify-content-between align-items-center">
-        <mat-form-field appearance="outline">
-            <mat-label>Buscar Estudiante</mat-label>
-            <input matInput placeholder="Ej: Samuel">
-            <mat-icon matSuffix>search</mat-icon>
-            <!-- <mat-hint>Ej: Samuel</mat-hint> -->
+        <mat-form-field appearance="fill">
+            <mat-label>Selecciona la Fecha</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <!-- <mat-hint>Ej: 12/15/2022</mat-hint> -->
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <div class="gap">
             <button mat-stroked-button color="primary">Exportar</button>
-            <button mat-raised-button color="primary">Agregar Estudiante</button>
+            <button mat-raised-button color="primary">Guardar</button>
         </div>
     </article>
-    <div class="mat-elevation-z8 mb-4">
+    <div class="mat-elevation-z8 mb-4 mt-4">
         <table mat-table [dataSource]="dataSource">
 
             <!-- Position Column -->
             <ng-container matColumnDef="position">
-                <th mat-header-cell *matHeaderCellDef> Matricula </th>
+                <th mat-header-cell *matHeaderCellDef> No. </th>
                 <td mat-cell *matCellDef="let element"> {{element.position}} </td>
             </ng-container>
 
             <!-- Name Column -->
             <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <th mat-header-cell *matHeaderCellDef> Name </th>
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
 
             <!-- Weight Column -->
             <ng-container matColumnDef="weight">
-                <th mat-header-cell *matHeaderCellDef> Apellido </th>
+                <th mat-header-cell *matHeaderCellDef> Weight </th>
                 <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-            </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-                <th mat-header-cell *matHeaderCellDef> Correo Electronico </th>
-                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-            </ng-container>
-
-            <!-- Accion Column -->
-            <ng-container matColumnDef="accion">
-                <th mat-header-cell *matHeaderCellDef> Acciones </th>
-                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

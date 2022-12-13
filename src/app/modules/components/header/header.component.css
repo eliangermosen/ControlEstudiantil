@@ -1,0 +1,12 @@
+.header{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar{
+    height: 60px;
+    width: auto;
+    border-radius: 150px;
+}

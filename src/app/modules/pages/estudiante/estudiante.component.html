@@ -1,0 +1,78 @@
+<app-header></app-header>
+
+<section class="container">
+    <article class="d-flex justify-content-start align-items-center perfil-info mt-4">
+        <img src="../../../../assets/avatar.jpg" alt="imagen del maestro" class="avatar-m">
+        <div>
+            <h3 class="m-0">Nombre estudiante</h3>
+            <p>2022-1215</p>
+        </div>
+    </article>
+    <article class="d-flex justify-content-start align-items-center mt-4 mb-4 container-cards">
+        <mat-card class="card-m">
+            <mat-card-content>
+                <div>
+                    <!-- <h2 class="m-0">{{calculoGeneral(calificacion)}}</h2> -->
+                    <h2 class="m-0">P</h2>
+                </div>
+                <h4 class="m-0">
+                    Estado General
+                </h4>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="card-m">
+            <mat-card-content>
+                <div class="row-card">
+                    <mat-icon fontIcon="alternate_email"></mat-icon>
+                    <p>correo@gmail.com</p>
+                </div>
+                <div class="row-card">
+                    <mat-icon fontIcon="phone"></mat-icon>
+                    <p>(809) 809-8790</p>
+                </div>
+                <h4 class="m-0">
+                    Contacto
+                </h4>
+            </mat-card-content>
+        </mat-card>
+        <!-- <mat-card class="card-m">
+            <mat-card-content>
+                <div>
+                    <mat-icon fontIcon="star"></mat-icon>
+                    <mat-icon fontIcon="star"></mat-icon>
+                    <mat-icon fontIcon="star"></mat-icon>
+                    <mat-icon fontIcon="star"></mat-icon>
+                    <mat-icon fontIcon="star"></mat-icon>
+                </div>
+                <h4 class="m-0">
+                    Asistencia
+                </h4>
+            </mat-card-content>
+        </mat-card> -->
+    </article>
+    <div class="mat-elevation-z8 mb-4">
+        <table mat-table [dataSource]="dataSource">
+
+            <!-- Asignatura Column -->
+            <ng-container matColumnDef="asignatura">
+                <th mat-header-cell *matHeaderCellDef> Asignatura </th>
+                <td mat-cell *matCellDef="let element"> {{element.asignatura}} </td>
+            </ng-container>
+
+            <!-- Calificacion Column -->
+            <ng-container matColumnDef="calificacion">
+                <th mat-header-cell *matHeaderCellDef> Calificacion </th>
+                <td mat-cell *matCellDef="let element"> {{element.calificacion}} </td>
+            </ng-container>
+
+            <!-- Calificacion Column -->
+            <ng-container matColumnDef="literal">
+                <th mat-header-cell *matHeaderCellDef> Literal </th>
+                <td mat-cell *matCellDef="let element"> {{calculoLiteral(element.calificacion)}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</section>

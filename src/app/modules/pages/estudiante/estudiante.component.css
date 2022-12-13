@@ -1,0 +1,23 @@
+.avatar-m {
+    height: 140px;
+    width: auto;
+    border-radius: 150px;
+}
+
+.perfil-info{
+    gap: 12px;
+}
+
+.container-cards{
+    gap: 40px;
+}
+
+.card-m{
+    height: 124px;
+    width: auto;
+}
+
+.row-card{
+    display: flex;
+    gap: 8px;
+}
