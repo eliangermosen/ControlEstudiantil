@@ -9,6 +9,7 @@ import { AsistenciaComponent } from './pages/asistencias/asistencia/asistencia.c
 import { CalificacionComponent } from './pages/calificacion/calificacion.component';
 import { FormComponent } from './pages/form/form.component';
 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { FormComponent } from './pages/form/form.component';
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule, 
+    FormsModule
   ]
 })
 export class ModulesModule { }
