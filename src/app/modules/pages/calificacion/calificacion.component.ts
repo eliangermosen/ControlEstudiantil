@@ -8,7 +8,7 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./calificacion.component.css']
 })
 export class CalificacionComponent implements AfterViewInit {
-  displayedColumns: string[] = ['matricula', 'nombre', 'apellido', 'correo', 'accion'];
+  displayedColumns: string[] = ['matricula', 'nombre', 'lengua', 'matematica', 'sociales', 'naturales'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -16,18 +16,32 @@ export class CalificacionComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
+
+  colorDinamico(valor:any){
+    if(valor >= 90) return "estado-green"
+
+    if(valor >= 80) return "estado-yellow "
+
+    if(valor >= 70) return "estado-indig"
+
+    return "estado-red"
+  }
+
 }
 
 export interface PeriodicElement {
   matricula: string;
   nombre: string;
   apellido: string;
-  correo: string;
+  lengua: string;
+  matematica: string;
+  sociales: string;
+  naturales: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {matricula: '2022-1111', nombre: 'Nombre1', apellido: 'Estudiante', correo: 'correo1@gmail.com'},
-  {matricula: '2022-2222', nombre: 'Nombre', apellido: 'Estudiante2', correo: 'correo2@gmail.com'},
-  {matricula: '2022-3333', nombre: 'Nombre3', apellido: 'Estudiante', correo: 'correo3@gmail.com'},
-  {matricula: '2022-4444', nombre: 'Nombre', apellido: 'Estudiante4', correo: 'correo4@gmail.com'}
+  {matricula: '2022-1111', nombre: 'Nombre1', apellido: 'Estudiante', lengua: '84', matematica: '94', sociales: '74', naturales: '64'},
+  {matricula: '2022-2222', nombre: 'Nombre', apellido: 'Estudiante2', lengua: '94', matematica: '74', sociales: '54', naturales: '74'},
+  {matricula: '2022-3333', nombre: 'Nombre3', apellido: 'Estudiante', lengua: '54', matematica: '64', sociales: '74', naturales: '81'},
+  {matricula: '2022-4444', nombre: 'Nombre', apellido: 'Estudiante4', lengua: '74', matematica: '84', sociales: '84', naturales: '90'}
 ];

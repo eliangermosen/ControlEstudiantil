@@ -2,3 +2,10 @@
     display: flex;
     gap:12px
 }
+
+.estado-asistencia{
+    width: 80px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}

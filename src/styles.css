@@ -4,14 +4,14 @@
     /** COLOR PALETTE **/
     --backgroung: #FFFFFF;
     --black: #000000;
-    /* --blue: rgba(56, 96, 170, 1);
-    --blue-light: rgba(56, 96, 170, 0.3);
     --yellow: rgba(253, 216, 93, 1);
     --yellow-light: rgba(253, 216, 93, 0.5);
     --red: rgba(241, 75, 61, 1);
     --red-light: rgba(241, 75, 61, 0.5);
     --green: rgba(96, 211, 148, 1);
-    --green-light: rgba(96, 211, 148, 0.5); */
+    --green-light: rgba(96, 211, 148, 0.5);
+    --indig: rgba(63, 81, 181, 0.8);
+    --indig-light: rgba(63, 81, 181, 0.4);
 }
 
 * {
@@ -79,6 +79,34 @@ h5 {
 small,
 .text_small {
     font-size: 0.8rem;
+}
+
+.estado-green{
+    border: 2.2px solid var(--green);
+    background-color: var(--green-light);
+    border-radius: 8px;
+    padding: 4px 8px;
+}
+
+.estado-yellow{
+    border: 2.2px solid var(--yellow);
+    background-color: var(--yellow-light);
+    border-radius: 8px;
+    padding: 4px 8px;
+}
+
+.estado-red{
+    border: 2.2px solid var(--red);
+    background-color: var(--red-light);
+    border-radius: 8px;
+    padding: 4px 8px;
+}
+
+.estado-indig{
+    border: 2.2px solid var(--indig);
+    background-color: var(--indig-light);
+    border-radius: 8px;
+    padding: 4px 8px;
 }
 
 /* html, body { height: 100%; }

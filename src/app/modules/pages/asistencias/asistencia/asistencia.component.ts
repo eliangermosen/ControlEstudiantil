@@ -8,41 +8,36 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./asistencia.component.css']
 })
 export class AsistenciaComponent implements AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'weight'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  displayedColumns: string[] = ['matricula', 'nombre', 'asistencia'];
+  dataSource = new MatTableDataSource<EstudianteElement>(ESTUDIANTE_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
+
+  colorDinamico(valor:any){
+    if(valor === 'Presente') return "estado-green"
+
+    if(valor === 'Excusa') return "estado-yellow"
+
+    if(valor === 'Ausente') return "estado-red"
+
+    return "estado-indig"
+  }
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
+export interface EstudianteElement {
+  matricula: string;
+  nombre: string;
+  apellido: string;
+  estado: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079},
-  {position: 2, name: 'Helium', weight: 4.0026},
-  {position: 3, name: 'Lithium', weight: 6.941},
-  {position: 4, name: 'Beryllium', weight: 9.0122},
-  {position: 5, name: 'Boron', weight: 10.811},
-  {position: 6, name: 'Carbon', weight: 12.0107},
-  {position: 7, name: 'Nitrogen', weight: 14.0067},
-  {position: 8, name: 'Oxygen', weight: 15.9994},
-  {position: 9, name: 'Fluorine', weight: 18.9984},
-  {position: 10, name: 'Neon', weight: 20.1797},
-  {position: 11, name: 'Sodium', weight: 22.9897},
-  {position: 12, name: 'Magnesium', weight: 24.305},
-  {position: 13, name: 'Aluminum', weight: 26.9815},
-  {position: 14, name: 'Silicon', weight: 28.0855},
-  {position: 15, name: 'Phosphorus', weight: 30.9738},
-  {position: 16, name: 'Sulfur', weight: 32.065},
-  {position: 17, name: 'Chlorine', weight: 35.453},
-  {position: 18, name: 'Argon', weight: 39.948},
-  {position: 19, name: 'Potassium', weight: 39.0983},
-  {position: 20, name: 'Calcium', weight: 40.078},
+const ESTUDIANTE_DATA: EstudianteElement[] = [
+  {matricula: '2022-1111', nombre: 'Nombre1', apellido: 'Estudiante', estado: 'Ausente'},
+  {matricula: '2022-2222', nombre: 'Nombre', apellido: 'Estudiante2', estado: 'Presente'},
+  {matricula: '2022-3333', nombre: 'Nombre3', apellido: 'Estudiante', estado: 'Excusa'},
+  {matricula: '2022-4444', nombre: 'Nombre', apellido: 'Estudiante4', estado: 'Retirado'}
 ];
