@@ -2,6 +2,9 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 
+// import jspdf from 'jspdf';
+import {jsPDF} from 'jspdf';
+
 @Component({
   selector: 'app-asistencia',
   templateUrl: './asistencia.component.html',
@@ -25,6 +28,18 @@ export class AsistenciaComponent implements AfterViewInit {
     if(valor === 'Ausente') return "estado-red"
 
     return "estado-indig"
+  }
+
+  exportarPDF(){
+    console.log('exportando!');
+    const pdf = new jsPDF('p', 'pt', 'a3');
+
+    let elementHTML: any = document.getElementById('tabla');
+    pdf.html(elementHTML, {
+      callback: function(pdf){
+        pdf.save('asistencia.pdf');
+      }
+    });
   }
 }
 

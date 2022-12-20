@@ -11,12 +11,12 @@
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <div class="gap">
-            <button mat-stroked-button color="primary">Exportar</button>
+            <button mat-stroked-button color="primary" (click)="exportarPDF()">Exportar</button>
             <button mat-raised-button color="primary">Guardar</button>
         </div>
     </article>
     <div class="mat-elevation-z8 mb-4 mt-4">
-        <table mat-table [dataSource]="dataSource">
+        <table mat-table [dataSource]="dataSource" id="tabla">
 
             <ng-container matColumnDef="matricula">
                 <th mat-header-cell *matHeaderCellDef> Matricula </th>
