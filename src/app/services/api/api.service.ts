@@ -26,7 +26,9 @@ export class ApiService {
     return this.http.get<any>(API_URL+'Estudiantes/'+id);
   };
   // POST
-  postEstudiantes(){};
+  postEstudiante(estudiante:Estudiante):Observable<Estudiante>{
+    return this.http.post<Estudiante>(API_URL+'Estudiantes', estudiante);
+  };
   // PUT
   putEstudiantes(){};
   // DELETE

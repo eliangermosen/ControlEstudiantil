@@ -34,8 +34,8 @@
         </div>
         <div class="gap justify-content-end">
             <button mat-button color="primary" type="reset">Limpiar</button>
-            <button mat-stroked-button color="warn">Cancelar</button>
-            <button mat-raised-button color="primary">Guardar</button>
+            <button mat-stroked-button color="warn" (click)="cancelar()">Cancelar</button>
+            <button mat-raised-button color="primary" [disabled]="formEstudiante.invalid">Guardar</button>
         </div>
     </form>
 </section>

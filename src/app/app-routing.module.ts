@@ -13,6 +13,7 @@ const routes: Routes = [
   {path:'asistencia', component: AsistenciaComponent},
   {path:'calificacion', component: CalificacionComponent},
   {path:'form', component: FormComponent},
+  {path:'form/:id', component: FormComponent},
   {path:'**', redirectTo:'inicio', pathMatch:'full'}
 ];
 
