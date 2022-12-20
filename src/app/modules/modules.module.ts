@@ -9,8 +9,9 @@ import { AsistenciaComponent } from './pages/asistencias/asistencia/asistencia.c
 import { CalificacionComponent } from './pages/calificacion/calificacion.component';
 import { FormComponent } from './pages/form/form.component';
 
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';//reactividad formularios
 
+import { HttpClientModule } from '@angular/common/http';//peticiones http
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CommonModule,
     MaterialModule,
     ReactiveFormsModule, 
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ]
 })
 export class ModulesModule { }

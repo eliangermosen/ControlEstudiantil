@@ -9,7 +9,7 @@ import { FormComponent } from './modules/pages/form/form.component';
 
 const routes: Routes = [
   {path:'inicio', component: InicioComponent},
-  {path:'estudiante', component: EstudianteComponent},
+  {path:'estudiante/:id', component: EstudianteComponent},
   {path:'asistencia', component: AsistenciaComponent},
   {path:'calificacion', component: CalificacionComponent},
   {path:'form', component: FormComponent},
