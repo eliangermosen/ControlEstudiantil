@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 import { Estudiante } from '../../interfaces/estudiante';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
@@ -46,6 +48,35 @@ export class InicioComponent implements AfterViewInit {
 
   crearEstudiante(){
     this.router.navigate(['form']);
+  }
+
+  eliminar(){
+    Swal.fire({
+      title: 'Quiere eliminarlo?',
+      text: "No podras retroceder el tiempo!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminalo!',
+      cancelButtonText: 'No, cancela!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Eliminado!',
+          'Estudiante eliminado.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        Swal.fire(
+          'Cancelado',
+          'Estudiante a salvo',
+          'error'
+        )
+      }
+    })
   }
 
 }
