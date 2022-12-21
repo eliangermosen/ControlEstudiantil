@@ -5,6 +5,8 @@ import { ApiService } from 'src/app/services/api/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Estudiante } from 'src/app/modules/interfaces/estudiante';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -43,9 +45,10 @@ export class FormComponent {
     this.api.postEstudiante(form).subscribe((data) => {
       console.log(data);
     })
+    this.alertCreado();
   }
 
-  cancelar(){
+  irInicio(){
     this.router.navigate(['inicio']);
   }
 
@@ -54,6 +57,17 @@ export class FormComponent {
     
     let matricula = `${new Date().getFullYear()}-${random.substr(-4)}`;
     return matricula
+  }
+
+  alertCreado(){
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Estudiante creado!',
+      showConfirmButton: false,
+      timer: 1500
+    });
+    this.irInicio();
   }
 
 }
