@@ -1,7 +1,10 @@
 <app-header></app-header>
 
 <section class="container">
-    <h2>Agregar Estudiante</h2>
+    <h2 *ngIf="!edit; else elseBlock">Agregar Estudiante</h2>
+    <ng-template #elseBlock>
+        <h2>Editar Estudiante</h2>
+    </ng-template>
     <form class="d-flex flex-column" [formGroup]="formEstudiante" (ngSubmit)="onSubmit(formEstudiante.value)">
         <div class="row">
             <mat-form-field appearance="outline" class="col-sm-4">
@@ -35,7 +38,14 @@
         <div class="gap justify-content-end">
             <button mat-button color="primary" type="reset">Limpiar</button>
             <button mat-stroked-button color="warn" (click)="irInicio()">Cancelar</button>
-            <button mat-raised-button color="primary" [disabled]="formEstudiante.invalid">Guardar</button>
+            <button *ngIf="!edit; else elseBtn" mat-raised-button color="primary" [disabled]="formEstudiante.invalid">
+                Guardar
+            </button>
+            <ng-template #elseBtn>
+                <button mat-raised-button color="primary" [disabled]="formEstudiante.invalid">
+                    Editar
+                </button>
+            </ng-template>
         </div>
     </form>
 </section>

@@ -1,6 +1,6 @@
 import { Calificacion } from 'src/app/modules/interfaces/calificacion';
 export interface Estudiante {
-    idEstudiante: number,
+    id: number,
     matricula: string,
     nombre: string,
     apellido: string,

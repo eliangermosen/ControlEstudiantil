@@ -14,6 +14,9 @@ import Swal from 'sweetalert2';
 })
 export class FormComponent {
 
+  datosEstudiante!:Estudiante;
+  edit: boolean = false;
+
   constructor(
     private api: ApiService,
     private activatedRouter: ActivatedRoute,
@@ -21,12 +24,21 @@ export class FormComponent {
   ){}
 
   ngOnInit(): void{
-    /* let estudianteId = this.activatedRouter.snapshot.paramMap.get('id');
-    console.log(estudianteId); */
-    let matricula = this.generadorMatricula()
-    this.formEstudiante.patchValue({
-      'matricula' : matricula
-    })
+    let estudianteId = this.activatedRouter.snapshot.paramMap.get('id');
+    console.log(estudianteId);
+    if(!estudianteId){
+      console.log('crear');
+      console.log(this.edit);
+      let matricula = this.generadorMatricula();
+      this.formEstudiante.patchValue({
+        'matricula' : matricula
+      })
+    }else{
+      console.log('editar');
+      this.edit = true;
+      console.log(this.edit);
+      this.getEstudiante(estudianteId);
+    };
   }
 
   formEstudiante = new FormGroup({
@@ -39,13 +51,39 @@ export class FormComponent {
     correo: new FormControl('', Validators.required)
   })
 
+  getEstudiante(id:any){
+    this.api.getEstudiante(id).subscribe(data => {
+      this.datosEstudiante = data;
+      console.log(this.datosEstudiante);
+      this.formEstudiante.setValue({
+        'id' : id,
+        'matricula' : this.datosEstudiante.matricula,
+        'nombre' : this.datosEstudiante.nombre,
+        'apellido' : this.datosEstudiante.apellido,
+        'cedula' : this.datosEstudiante.cedula,
+        'telefono' : this.datosEstudiante.telefono,
+        'correo' : this.datosEstudiante.correo
+      });
+      console.log(this.formEstudiante);
+    });
+  }
+
   onSubmit(form:any){
     console.log('llegando');
     console.log(form);
-    this.api.postEstudiante(form).subscribe((data) => {
-      console.log(data);
-    })
-    this.alertCreado();
+    if(!this.edit){
+      console.log('creando');
+      this.api.postEstudiante(form).subscribe((data) => {
+        console.log(data);
+      });
+      this.alert('Creado');
+    }else{
+      console.log('editando');
+      this.api.putEstudiante(form).subscribe((data) => {
+        console.log(data);
+      });
+      this.alert('Editado');
+    }
   }
 
   irInicio(){
@@ -59,13 +97,13 @@ export class FormComponent {
     return matricula
   }
 
-  alertCreado(){
+  alert(tipo:string){
     Swal.fire({
       position: 'top-end',
       icon: 'success',
-      title: 'Estudiante creado!',
+      title: `Estudiante ${tipo}!`,
       showConfirmButton: false,
-      timer: 1500
+      timer: 2000
     });
     this.irInicio();
   }

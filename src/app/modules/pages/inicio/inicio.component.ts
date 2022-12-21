@@ -52,6 +52,7 @@ export class InicioComponent implements AfterViewInit {
 
   editarEstudiante(id:any){
     console.log(id);
+    this.router.navigate(['form',id]);
   }
 
   eliminar(id:any){

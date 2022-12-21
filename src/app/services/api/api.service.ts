@@ -30,7 +30,9 @@ export class ApiService {
     return this.http.post<Estudiante>(API_URL+'Estudiantes', estudiante);
   };
   // PUT
-  putEstudiantes(){};
+  putEstudiante(estudiante:Estudiante):Observable<Estudiante>{
+    return this.http.put<Estudiante>(API_URL+'Estudiantes/'+estudiante.id, estudiante);
+  };
   // DELETE
   deleteEstudiante(id:number):Observable<any>{
     return this.http.delete<any>(API_URL+'Estudiantes/'+id);
