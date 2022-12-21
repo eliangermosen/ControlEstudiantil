@@ -8,6 +8,9 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./calificacion.component.css']
 })
 export class CalificacionComponent implements AfterViewInit {
+
+  campoFiltro: string = '';
+
   displayedColumns: string[] = ['matricula', 'nombre', 'lengua', 'matematica', 'sociales', 'naturales'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
@@ -25,6 +28,11 @@ export class CalificacionComponent implements AfterViewInit {
     if(valor >= 70) return "estado-indig"
 
     return "estado-red"
+  }
+
+  filtrado(){
+    console.log(this.campoFiltro);
+    this.dataSource.filter = this.campoFiltro.trim().toLowerCase();
   }
 
 }

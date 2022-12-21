@@ -11,7 +11,8 @@ import { FormComponent } from './pages/form/form.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';//reactividad formularios
 
-import { HttpClientModule } from '@angular/common/http';//peticiones http
+import { HttpClientModule } from '@angular/common/http';
+import { FiltroEstudiantePipe } from './pipes/filtro-estudiante.pipe';//peticiones http
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';//peticiones http
     EstudianteComponent,
     AsistenciaComponent,
     CalificacionComponent,
-    FormComponent
+    FormComponent,
+    FiltroEstudiantePipe
   ],
   imports: [
     CommonModule,
