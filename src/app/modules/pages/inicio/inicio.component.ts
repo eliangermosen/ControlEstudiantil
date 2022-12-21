@@ -16,10 +16,10 @@ import Swal from 'sweetalert2';
 export class InicioComponent implements AfterViewInit {
 
   estudiantes!:Estudiante[];
+  dataSource:any;
+  campoFiltro: string = '';
 
   constructor(private api: ApiService, private router:Router){}
-
-  dataSource:any;
 
   ngOnInit(): void{
     this.getData();
@@ -40,6 +40,10 @@ export class InicioComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  filtrado(){
+    this.dataSource.filter = this.campoFiltro.trim().toLowerCase();
   }
 
   detallesEstudiante(id:any){
