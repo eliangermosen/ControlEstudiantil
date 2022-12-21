@@ -45,11 +45,12 @@
                         aria-label="icon button with a open_in_new icon">
                         <mat-icon>open_in_new</mat-icon>
                     </button>
-                    <button mat-icon-button color="amber" aria-label="icon button with a edit icon">
+                    <button (click)="editarEstudiante(element.id)" mat-icon-button color="amber"
+                        aria-label="icon button with a edit icon">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button color="warn" aria-label="icon button with a delete icon"
-                        (click)="eliminar()">
+                    <button (click)="eliminar(element.id)" mat-icon-button color="warn"
+                        aria-label="icon button with a delete icon">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </td>

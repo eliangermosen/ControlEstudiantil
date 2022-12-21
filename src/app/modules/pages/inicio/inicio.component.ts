@@ -50,7 +50,12 @@ export class InicioComponent implements AfterViewInit {
     this.router.navigate(['form']);
   }
 
-  eliminar(){
+  editarEstudiante(id:any){
+    console.log(id);
+  }
+
+  eliminar(id:any){
+    console.log(id);
     Swal.fire({
       title: 'Quiere eliminarlo?',
       text: "No podras retroceder el tiempo!",
@@ -61,11 +66,16 @@ export class InicioComponent implements AfterViewInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
+        console.log("acepto con el id "+ id);
+        this.api.deleteEstudiante(id).subscribe((respuesta:any) => {
+          console.log(respuesta);
+        });
+        setTimeout(() => { location.reload(); },700); 
         Swal.fire(
           'Eliminado!',
           'Estudiante eliminado.',
           'success'
-        )
+        );
       } else if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
@@ -75,6 +85,7 @@ export class InicioComponent implements AfterViewInit {
           'Estudiante a salvo',
           'error'
         )
+        console.log("Cancelo");
       }
     })
   }

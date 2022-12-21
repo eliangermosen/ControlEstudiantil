@@ -32,7 +32,9 @@ export class ApiService {
   // PUT
   putEstudiantes(){};
   // DELETE
-  deleteEstudiantes(){};
+  deleteEstudiante(id:number):Observable<any>{
+    return this.http.delete<any>(API_URL+'Estudiantes/'+id);
+  };
   
   // CALIFICACION:
   // GET ALL
