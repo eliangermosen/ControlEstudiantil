@@ -2,6 +2,8 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-calificacion',
   templateUrl: './calificacion.component.html',
@@ -11,7 +13,9 @@ export class CalificacionComponent implements AfterViewInit {
 
   campoFiltro: string = '';
 
-  displayedColumns: string[] = ['matricula', 'nombre', 'lengua', 'matematica', 'sociales', 'naturales'];
+  constructor(private router:Router){}
+
+  displayedColumns: string[] = ['matricula', 'nombre', 'lengua', 'matematica', 'sociales', 'naturales', 'accion'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -33,6 +37,11 @@ export class CalificacionComponent implements AfterViewInit {
   filtrado(){
     console.log(this.campoFiltro);
     this.dataSource.filter = this.campoFiltro.trim().toLowerCase();
+  }
+
+  calificar(id:any){
+    console.log(id);
+    this.router.navigate(['calificar',id]);
   }
 
 }

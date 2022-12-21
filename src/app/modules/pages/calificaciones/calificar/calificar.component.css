@@ -1,0 +1,14 @@
+.gap {
+    display: flex;
+    gap: 12px
+}
+
+.avatar-m {
+    height: 100px;
+    width: auto;
+    border-radius: 150px;
+}
+
+.perfil-info {
+    gap: 12px;
+}

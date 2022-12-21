@@ -1,0 +1,65 @@
+<app-header></app-header>
+
+<section class="container">
+    <h2>Calificar Estudiante:</h2>
+    <article class="d-flex justify-content-start align-items-center perfil-info mb-4">
+        <img src="../../../../assets/avatar.jpg" alt="imagen del estudiante" class="avatar-m">
+        <div>
+            <h3 class="mb-0 mt-0">{{datosEstudiante.nombre}} {{datosEstudiante.apellido}}</h3>
+            <p>{{datosEstudiante.matricula}}</p>
+        </div>
+    </article>
+    <form class="d-flex flex-column" [formGroup]="calificarEstudiante" (ngSubmit)="onSubmit(calificarEstudiante.value)">
+        <div class="row">
+            <mat-form-field class="col-sm-6" appearance="fill">
+                <mat-label>Lengua Española</mat-label>
+                <input type="number" placeholder="Calificar del 1 al 100" aria-label="Number" matInput
+                    formControlName="lenguaEspanola" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field class="col-sm-6" appearance="fill">
+                <mat-label>Matematicas</mat-label>
+                <input type="number" placeholder="Calificar del 1 al 100" aria-label="Matematicas" matInput
+                    formControlName="matematicas" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="col-sm-6" appearance="fill">
+                <mat-label>Ciencias Sociales</mat-label>
+                <input type="number" placeholder="Calificar del 1 al 100" aria-label="Number" matInput
+                    formControlName="cienciasSociales" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field class="col-sm-6" appearance="fill">
+                <mat-label>Ciencias Naturales</mat-label>
+                <input type="number" placeholder="Calificar del 1 al 100" aria-label="Number" matInput
+                    formControlName="cienciasNaturales" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+        <div class="gap justify-content-end">
+            <button mat-button color="primary" type="reset">Limpiar</button>
+            <button mat-stroked-button color="warn" (click)="irCalificacion()">Cancelar</button>
+            <button mat-raised-button color="primary" [disabled]="calificarEstudiante.invalid">
+                Guardar
+            </button>
+        </div>
+    </form>
+</section>

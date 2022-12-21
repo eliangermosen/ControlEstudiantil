@@ -48,7 +48,9 @@ export class ApiService {
     return this.http.get<Calificacion>(API_URL+'Calificacion/'+id);
   };
   // POST
-  postCalificaciones(){};
+  postCalificacion(estudiante:Calificacion):Observable<Calificacion>{
+    return this.http.post<Calificacion>(API_URL+'Calificacion', estudiante);
+  };
   // PUT
   putCalificaciones(){};
   // DELETE

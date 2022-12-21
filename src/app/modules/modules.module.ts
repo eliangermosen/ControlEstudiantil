@@ -6,13 +6,14 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { EstudianteComponent } from './pages/estudiante/estudiante.component';
 import { MaterialModule } from './material/material/material.module';
 import { AsistenciaComponent } from './pages/asistencias/asistencia/asistencia.component';
-import { CalificacionComponent } from './pages/calificacion/calificacion.component';
+import { CalificacionComponent } from './pages/calificaciones/calificacion/calificacion.component';
 import { FormComponent } from './pages/form/form.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';//reactividad formularios
 
 import { HttpClientModule } from '@angular/common/http';
-import { FiltroEstudiantePipe } from './pipes/filtro-estudiante.pipe';//peticiones http
+import { FiltroEstudiantePipe } from './pipes/filtro-estudiante.pipe';
+import { CalificarComponent } from './pages/calificaciones/calificar/calificar.component';//peticiones http
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FiltroEstudiantePipe } from './pipes/filtro-estudiante.pipe';//peticion
     AsistenciaComponent,
     CalificacionComponent,
     FormComponent,
-    FiltroEstudiantePipe
+    FiltroEstudiantePipe,
+    CalificarComponent
   ],
   imports: [
     CommonModule,
