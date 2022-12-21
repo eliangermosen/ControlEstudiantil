@@ -7,5 +7,5 @@ export interface Estudiante {
     cedula: string,
     telefono: string,
     correo: string,
-    calificacion: Calificacion
+    calificacions: Calificacion[]
 }

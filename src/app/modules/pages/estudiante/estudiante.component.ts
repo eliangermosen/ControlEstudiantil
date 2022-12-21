@@ -36,14 +36,14 @@ export class EstudianteComponent implements AfterViewInit {
     this.api.getEstudiante(id).subscribe((data) => {
       this.estudiante = data;
       console.log(this.estudiante);
-      console.log(this.estudiante.calificacion);
-      for (const [key, value] of Object.entries(this.estudiante.calificacion)) {
+      console.log(this.estudiante.calificacions);
+      for (const [key, value] of Object.entries(this.estudiante.calificacions[0])) {
         console.log(`${key} ${value}`); // "a 5", "b 7", "c 9"
         if(key === 'id' || key === 'estudianteId') continue
         MATERIA_DATA.push({asignatura:key, calificacion:value})
       }
       console.log(MATERIA_DATA);
-      console.log(this.estudiante.calificacion.matematicas);
+      // console.log(this.estudiante.calificacions.matematicas);
       /* this.dataSource = new MatTableDataSource(data);
       console.log(this.dataSource._data._value); */
     });

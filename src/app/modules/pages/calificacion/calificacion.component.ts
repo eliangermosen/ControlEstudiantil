@@ -25,7 +25,7 @@ export class CalificacionComponent implements AfterViewInit {
 
     if(valor >= 80) return "estado-yellow "
 
-    if(valor >= 70) return "estado-indig"
+    if(valor >= 70) return "estado-gris"
 
     return "estado-red"
   }

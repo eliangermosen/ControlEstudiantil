@@ -27,7 +27,7 @@ export class AsistenciaComponent implements AfterViewInit {
 
     if(valor === 'Ausente') return "estado-red"
 
-    return "estado-indig"
+    return "estado-gris"
   }
 
   exportarPDF(){
