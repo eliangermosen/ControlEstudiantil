@@ -11,7 +11,7 @@
         </mat-form-field>
         <div class="gap">
             <button mat-stroked-button color="primary">Exportar</button>
-            <button mat-raised-button color="primary">Guardar</button>
+            <!-- <button mat-raised-button color="primary">Guardar</button> -->
         </div>
     </article>
     <div class="mat-elevation-z8 mb-4">
@@ -30,7 +30,7 @@
             <ng-container matColumnDef="lengua">
                 <th mat-header-cell *matHeaderCellDef> Lengua Española </th>
                 <td mat-cell *matCellDef="let element">
-                    <span class="estado-gris" *ngIf="!element.calificacionDTO[0] else elseSpan">N/</span>
+                    <span class="py-1 px-2" *ngIf="!element.calificacionDTO[0] else elseSpan">00</span>
                     <ng-template #elseSpan>
                         <span [ngClass]="colorDinamico(element.calificacionDTO[0].lenguaEspanola)">
                             {{element.calificacionDTO[0].lenguaEspanola}}
@@ -42,7 +42,7 @@
             <ng-container matColumnDef="matematica">
                 <th mat-header-cell *matHeaderCellDef> Matematicas </th>
                 <td mat-cell *matCellDef="let element">
-                    <span class="estado-gris" *ngIf="!element.calificacionDTO[0] else elseSpan">N/</span>
+                    <span class="py-1 px-2" *ngIf="!element.calificacionDTO[0] else elseSpan">00</span>
                     <ng-template #elseSpan>
                         <span [ngClass]="colorDinamico(element.calificacionDTO[0].matematicas)">
                             {{element.calificacionDTO[0].matematicas}}
@@ -54,7 +54,7 @@
             <ng-container matColumnDef="sociales">
                 <th mat-header-cell *matHeaderCellDef> Ciencias Sociales </th>
                 <td mat-cell *matCellDef="let element">
-                    <span class="estado-gris" *ngIf="!element.calificacionDTO[0] else elseSpan">N/</span>
+                    <span class="py-1 px-2" *ngIf="!element.calificacionDTO[0] else elseSpan">00</span>
                     <ng-template #elseSpan>
                         <span [ngClass]="colorDinamico(element.calificacionDTO[0].cienciasSociales)">
                             {{element.calificacionDTO[0].cienciasSociales}}
@@ -66,7 +66,7 @@
             <ng-container matColumnDef="naturales">
                 <th mat-header-cell *matHeaderCellDef> Ciencias Naturales </th>
                 <td mat-cell *matCellDef="let element">
-                    <span class="estado-gris" *ngIf="!element.calificacionDTO[0] else elseSpan">N/</span>
+                    <span class="py-1 px-2" *ngIf="!element.calificacionDTO[0] else elseSpan">00</span>
                     <ng-template #elseSpan>
                         <span [ngClass]="colorDinamico(element.calificacionDTO[0].cienciasNaturales)">
                             {{element.calificacionDTO[0].cienciasNaturales}}

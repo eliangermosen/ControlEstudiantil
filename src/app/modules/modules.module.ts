@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FiltroEstudiantePipe } from './pipes/filtro-estudiante.pipe';
 import { CalificarComponent } from './pages/calificaciones/calificar/calificar.component';
 import { ControlComponent } from './pages/asistencias/control/control.component';//peticiones http
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ControlComponent } from './pages/asistencias/control/control.component'
     MaterialModule,
     ReactiveFormsModule, 
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxChartsModule
   ]
 })
 export class ModulesModule { }

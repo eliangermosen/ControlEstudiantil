@@ -59,10 +59,11 @@ export class InicioComponent implements AfterViewInit {
     this.router.navigate(['form',id]);
   }
 
-  eliminar(id:any){
+  eliminar(id:any, nombre:any){
     console.log(id);
+    console.log(nombre);
     Swal.fire({
-      title: 'Quiere eliminarlo?',
+      title: `Quiere eliminar a ${nombre}?`,
       text: "No podras retroceder el tiempo!",
       icon: 'warning',
       showCancelButton: true,

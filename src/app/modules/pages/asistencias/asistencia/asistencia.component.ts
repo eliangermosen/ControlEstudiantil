@@ -7,6 +7,7 @@ import {jsPDF} from 'jspdf';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 import { EstudiantesAsistencias } from 'src/app/modules/interfaces/estudiantes-asistencias';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-asistencia',
@@ -17,7 +18,7 @@ export class AsistenciaComponent implements OnInit, AfterViewInit {
 
   estudiantesAsistencias:EstudiantesAsistencias[] = [];
   dataSource:any;
-  campoFiltro: string = '';
+  fechaFiltro: string = '';
 
   constructor(private api: ApiService, private router:Router){}
 
@@ -31,6 +32,14 @@ export class AsistenciaComponent implements OnInit, AfterViewInit {
       this.estudiantesAsistencias = data;
       this.dataSource = new MatTableDataSource(this.estudiantesAsistencias);
     });
+  }
+
+  fechaForm = new FormGroup({
+    fecha: new FormControl<Date | null>(null),
+  });
+
+  filtrado(){
+    console.log(this.fechaFiltro);
   }
 
   displayedColumns: string[] = ['matricula', 'nombre', 'asistencia'];
