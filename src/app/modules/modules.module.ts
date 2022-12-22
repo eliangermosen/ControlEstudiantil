@@ -13,7 +13,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';//reactividad 
 
 import { HttpClientModule } from '@angular/common/http';
 import { FiltroEstudiantePipe } from './pipes/filtro-estudiante.pipe';
-import { CalificarComponent } from './pages/calificaciones/calificar/calificar.component';//peticiones http
+import { CalificarComponent } from './pages/calificaciones/calificar/calificar.component';
+import { ControlComponent } from './pages/asistencias/control/control.component';//peticiones http
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CalificarComponent } from './pages/calificaciones/calificar/calificar.c
     CalificacionComponent,
     FormComponent,
     FiltroEstudiantePipe,
-    CalificarComponent
+    CalificarComponent,
+    ControlComponent
   ],
   imports: [
     CommonModule,

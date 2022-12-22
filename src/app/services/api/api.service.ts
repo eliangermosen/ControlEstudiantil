@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Estudiante } from 'src/app/modules/interfaces/estudiante';
 import { Calificacion } from 'src/app/modules/interfaces/calificacion';
 import { Asistencia } from 'src/app/modules/interfaces/asistencia';
+import { EstudiantesAsistencias } from '../../modules/interfaces/estudiantes-asistencias';
+import { EstudiantesCalificaciones } from './../../modules/interfaces/estudiantes-calificaciones';
 import { API_URL } from './settings';
 
 import { HttpClient } from '@angular/common/http';
@@ -36,6 +38,18 @@ export class ApiService {
   // DELETE
   deleteEstudiante(id:number):Observable<any>{
     return this.http.delete<any>(API_URL+'Estudiantes/'+id);
+  };
+
+  // RELACION ESTUDIANTES-ASISTENCIAS-CALIFICACIONES
+
+  // GET ALL ESTUDIANTES-ASISTENCIAS
+  getEstudiantesAsistencias():Observable<EstudiantesAsistencias[]>{
+    return this.http.get<EstudiantesAsistencias[]>(API_URL+'Estudiantes/asistencias');
+  };
+  
+  // GET ALL ESTUDIANTES-CALIFICACIONES
+  getEstudiantesCalificaciones():Observable<EstudiantesCalificaciones[]>{
+    return this.http.get<EstudiantesCalificaciones[]>(API_URL+'Estudiantes/calificaciones');
   };
   
   // CALIFICACION:

@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<section class="container">
+    <h2>Control Asistencia</h2>
+    <form [formGroup]="asistenciaEstudiante" (ngSubmit)="onSubmit(asistenciaEstudiante.value)" class="mb-4">
+        <div class="mat-elevation-z8 mb-4 mt-4">
+            <table mat-table [dataSource]="dataSource" id="tabla">
+
+                <ng-container matColumnDef="matricula">
+                    <th mat-header-cell *matHeaderCellDef> Matricula </th>
+                    <td mat-cell *matCellDef="let element"> {{element.matricula}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef> Nombre Completo </th>
+                    <td mat-cell *matCellDef="let element"> {{element.nombre}} {{element.apellido}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="asistencia">
+                    <th mat-header-cell *matHeaderCellDef> Control de Asistencia </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Asistencia</mat-label>
+                            <mat-select formControlName="estado">
+                                <mat-option *ngFor="let estado of estados" [value]="estado">
+                                    {{estado}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </div>
+        <div class="gap justify-content-end">
+            <button mat-button color="primary" type="reset">Limpiar</button>
+            <button mat-stroked-button color="warn" (click)="irAsistencia()">Cancelar</button>
+            <button mat-raised-button color="primary">
+                Guardar
+            </button>
+        </div>
+    </form>
+</section>

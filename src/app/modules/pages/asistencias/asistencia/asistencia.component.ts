@@ -1,18 +1,40 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 
 // import jspdf from 'jspdf';
 import {jsPDF} from 'jspdf';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api/api.service';
+import { EstudiantesAsistencias } from 'src/app/modules/interfaces/estudiantes-asistencias';
 
 @Component({
   selector: 'app-asistencia',
   templateUrl: './asistencia.component.html',
   styleUrls: ['./asistencia.component.css']
 })
-export class AsistenciaComponent implements AfterViewInit {
+export class AsistenciaComponent implements OnInit, AfterViewInit {
+
+  estudiantesAsistencias:EstudiantesAsistencias[] = [];
+  dataSource:any;
+  campoFiltro: string = '';
+
+  constructor(private api: ApiService, private router:Router){}
+
+  ngOnInit(): void{
+    this.getData();
+  }
+
+  getData(){
+    this.api.getEstudiantesAsistencias().subscribe(data => {
+      console.log(data);
+      this.estudiantesAsistencias = data;
+      this.dataSource = new MatTableDataSource(this.estudiantesAsistencias);
+    });
+  }
+
   displayedColumns: string[] = ['matricula', 'nombre', 'asistencia'];
-  dataSource = new MatTableDataSource<EstudianteElement>(ESTUDIANTE_DATA);
+  // dataSource = new MatTableDataSource<EstudianteElement>(ESTUDIANTE_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

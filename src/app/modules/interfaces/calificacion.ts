@@ -6,3 +6,11 @@ export interface Calificacion {
     cienciasSociales: number,
     cienciasNaturales: number
 }
+
+export interface CalificacionDTO {
+    id: number,
+    lenguaEspanola: number,
+    matematicas: number,
+    cienciasSociales: number,
+    cienciasNaturales: number
+}

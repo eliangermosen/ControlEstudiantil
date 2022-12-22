@@ -1,6 +1,8 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { EstudiantesCalificaciones } from './../../../interfaces/estudiantes-calificaciones';
+import { ApiService } from 'src/app/services/api/api.service';
 
 import { Router } from '@angular/router';
 
@@ -9,14 +11,28 @@ import { Router } from '@angular/router';
   templateUrl: './calificacion.component.html',
   styleUrls: ['./calificacion.component.css']
 })
-export class CalificacionComponent implements AfterViewInit {
+export class CalificacionComponent implements OnInit, AfterViewInit {
 
+  EstudiantesCalificaciones:EstudiantesCalificaciones[] = [];
+  dataSource:any;
   campoFiltro: string = '';
 
-  constructor(private router:Router){}
+  constructor(private router:Router,private api: ApiService){}
+
+  ngOnInit(): void{
+    this.getData();
+  }
+
+  getData(){
+    this.api.getEstudiantesCalificaciones().subscribe(data => {
+      console.log(data);
+      this.EstudiantesCalificaciones = data;
+      this.dataSource = new MatTableDataSource(this.EstudiantesCalificaciones);
+    });
+  }
 
   displayedColumns: string[] = ['matricula', 'nombre', 'lengua', 'matematica', 'sociales', 'naturales', 'accion'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -41,7 +57,7 @@ export class CalificacionComponent implements AfterViewInit {
 
   calificar(id:any){
     console.log(id);
-    this.router.navigate(['calificar',id]);
+    this.router.navigate(['calificacion',id]);
   }
 
 }
