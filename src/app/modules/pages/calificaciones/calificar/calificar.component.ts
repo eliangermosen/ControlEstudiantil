@@ -66,10 +66,10 @@ export class CalificarComponent {
 
   calificarEstudiante = new FormGroup({
     estudianteId: new FormControl(0),
-    lenguaEspanola: new FormControl('', Validators.required),
-    matematicas: new FormControl('', Validators.required),
-    cienciasSociales: new FormControl('', Validators.required),
-    cienciasNaturales: new FormControl('', Validators.required)
+    lenguaEspanola: new FormControl('', [Validators.max(100), Validators.required]),
+    matematicas: new FormControl('', [Validators.max(100), Validators.required]),
+    cienciasSociales: new FormControl('', [Validators.max(100), Validators.required]),
+    cienciasNaturales: new FormControl('', [Validators.max(100), Validators.required])
   })
 
   getEstudiante(id:any){

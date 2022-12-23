@@ -21,7 +21,7 @@
                     <td mat-cell *matCellDef="let element">
                         <mat-form-field appearance="fill">
                             <mat-label>Asistencia</mat-label>
-                            <mat-select formControlName="estado">
+                            <mat-select formControlName="estado" (change)="listado()">
                                 <mat-option *ngFor="let estado of estados" [value]="estado">
                                     {{estado}}
                                 </mat-option>

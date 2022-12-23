@@ -18,7 +18,10 @@ export class AsistenciaComponent implements OnInit, AfterViewInit {
 
   estudiantesAsistencias:EstudiantesAsistencias[] = [];
   dataSource:any;
+  // fechaFiltro!: Date;
   fechaFiltro: string = '';
+  fechaInicia: string = '2020-01-01T00:00:00';
+
 
   constructor(private api: ApiService, private router:Router){}
 
@@ -39,7 +42,13 @@ export class AsistenciaComponent implements OnInit, AfterViewInit {
   });
 
   filtrado(){
+    const fechaInicial = new Date('2020-01-01T00:00:00');
+    // console.log(this.fechaFiltro.toISOString());
     console.log(this.fechaFiltro);
+    console.log(this.dataSource);
+    console.log(fechaInicial.toISOString());
+    // this.dataSource.filter = this.fechaFiltro.toISOString();
+    this.dataSource.filter = this.fechaFiltro.trim().toLowerCase();
   }
 
   displayedColumns: string[] = ['matricula', 'nombre', 'asistencia'];

@@ -46,9 +46,9 @@ export class FormComponent {
     matricula: new FormControl(''),
     nombre: new FormControl('', Validators.required),
     apellido: new FormControl('', Validators.required),
-    cedula: new FormControl('', Validators.required),
-    telefono: new FormControl('', Validators.required),
-    correo: new FormControl('', Validators.required)
+    cedula: new FormControl('', [Validators.maxLength(13), Validators.required]),
+    telefono: new FormControl('', [Validators.maxLength(12), Validators.required]),
+    correo: new FormControl('', [Validators.email, Validators.required])
   })
 
   getEstudiante(id:any){

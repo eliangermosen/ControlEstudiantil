@@ -5,7 +5,7 @@
     <article class="d-flex justify-content-between align-items-center">
         <mat-form-field appearance="fill" [formGroup]="fechaForm">
             <mat-label>Selecciona la Fecha</mat-label>
-            <input matInput [matDatepicker]="picker" [(ngModel)]="fechaFiltro" (onClick)="filtrado()"
+            <input matInput [matDatepicker]="picker" [(ngModel)]="fechaFiltro" (click)="filtrado()"
                 formControlName="fecha">
             <!-- <mat-hint>Ej: 12/15/2022</mat-hint> -->
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -13,7 +13,7 @@
         </mat-form-field>
         <div class="gap">
             <button mat-stroked-button color="primary" (click)="exportarPDF()">Exportar</button>
-            <!-- <button mat-raised-button color="primary">Guardar</button> -->
+            <a mat-raised-button color="primary" href="asistencia/control">Control</a>
         </div>
     </article>
     <div class="mat-elevation-z8 mb-4 mt-4">

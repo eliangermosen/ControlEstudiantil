@@ -17,6 +17,7 @@ export class ControlComponent {
   displayedColumns: string[] = ['matricula', 'nombre', 'asistencia'];
   dataSource:any;
   estudiantes!:Estudiante[];
+  seleccionado = '';
   
   constructor(
     private api: ApiService,
@@ -49,6 +50,11 @@ export class ControlComponent {
   onSubmit(form:any){
     console.log('llegando');
     console.log(form);
+  }
+
+  listado(){
+    console.log(this.seleccionado)
+    console.log(this.asistenciaEstudiante.get('estado'));
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
